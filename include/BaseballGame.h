@@ -6,6 +6,7 @@ using namespace std;
 class BaseballGame
 {
 public:
+    BaseballGame();
     bool isGameDone();
     void initialize();
     int getNumOfStrike();
@@ -21,5 +22,5 @@ private:
     string userNumberString;
     int numOfStrike;
     int numOfBall;
-    bool isGameDone;
+    bool m_isGameDone;
 };
