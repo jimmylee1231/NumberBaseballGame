@@ -74,6 +74,19 @@ void BaseballGame::input()
 }
 void BaseballGame::judge()
 {
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (userNumberString[i] == answerNumberString[j])
+            {
+                if (i == j)
+                    numOfStrike++;
+                else
+                    numOfBall++;
+            }
+        }
+    }
 }
 void BaseballGame::output()
 {
@@ -91,9 +104,29 @@ void BaseballGame::output()
 }
 void BaseballGame::generate3DigitRandomNumber()
 {
-    answerNumberString += to_string(rand() % 10);
-    answerNumberString += to_string(rand() % 10);
-    answerNumberString += to_string(rand() % 10);
+    bool hasNumber[10] = {
+        false,
+    };
+    int number;
+
+    number = rand() % 10;
+    answerNumberString += to_string(number);
+    hasNumber[number] = true;
+
+    number = rand() % 10;
+    while (hasNumber[number])
+    {
+        number = rand() % 10;
+    }
+    answerNumberString += to_string(number);
+    hasNumber[number] = true;
+
+    number = rand() % 10;
+    while (hasNumber[number])
+    {
+        number = rand() % 10;
+    }
+    answerNumberString += to_string(number);
 
     cout << answerNumberString << endl;
 }
