@@ -1,5 +1,7 @@
 #include "../include/BaseballGame.h"
 #include <iostream>
+#include <random>
+#include <time.h>
 
 using namespace std;
 
@@ -18,6 +20,7 @@ bool BaseballGame::isGameDone()
 void BaseballGame::initialize()
 {
     numOfStrike = 0;
+    srand(time(NULL));
     generate3DigitRandomNumber();
 }
 int BaseballGame::getNumOfStrike()
@@ -62,9 +65,10 @@ bool BaseballGame::isInputNumberWrong()
 
 void BaseballGame::input()
 {
+    userNumberString = "";
     while (isInputNumberWrong())
     {
-        cout << "3자리 숫자를 입력해주세요" << endl;
+        cout << "Enter 3 digit number" << endl;
         cin >> userNumberString;
     }
 }
@@ -82,9 +86,14 @@ void BaseballGame::output()
 
     if (numOfStrike == 3)
     {
-        cout << "숫자를 맞추셨습니다." << endl;
+        cout << "Correct Number!" << endl;
     }
 }
 void BaseballGame::generate3DigitRandomNumber()
 {
+    answerNumberString += to_string(rand() % 10);
+    answerNumberString += to_string(rand() % 10);
+    answerNumberString += to_string(rand() % 10);
+
+    cout << answerNumberString << endl;
 }
