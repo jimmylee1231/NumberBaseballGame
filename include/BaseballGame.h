@@ -16,6 +16,8 @@ public:
 
 private:
     void generate3DigitRandomNumber();
+    bool isInputNumberWrong();
+    bool isNumber(char ch);
 
 private:
     string answerNumberString;
